@@ -2,6 +2,9 @@ package com.example.fw;
 
 import java.util.Properties;
 
+import org.netbeans.jemmy.ClassReference;
+import org.netbeans.jemmy.operators.JFrameOperator;
+
 
 public class ApplicationManager {
 	
@@ -10,6 +13,8 @@ public class ApplicationManager {
 	private Properties props;
 
 	private FolderHelper folderHelper;
+
+	private JFrameOperator mainFrame;
 	
 	public static ApplicationManager getInstance() {
 		if(singleton == null){
@@ -34,5 +39,17 @@ public class ApplicationManager {
 			folderHelper = new FolderHelper(this);
 		}
 		return null;
+	}
+
+	public Object getApplication() {
+		if (mainFrame == null) {
+			try {
+				new ClassReference("addressbook.AddressBookFrame").startApplication();
+				mainFrame = new JFrameOperator("jAddressBook");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}
+		return mainFrame;
 	}
 }

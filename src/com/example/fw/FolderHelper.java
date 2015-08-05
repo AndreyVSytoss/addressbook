@@ -12,8 +12,7 @@ public class FolderHelper {
 	}
 
 	public Folders getFolders() {
-		// TODO Auto-generated method stub
-		return null;
+		manager.getApplication();
 	}
 
 	public void createFolder(String string) {
