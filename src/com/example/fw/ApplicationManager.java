@@ -41,7 +41,7 @@ public class ApplicationManager {
 		return null;
 	}
 
-	public Object getApplication() {
+	public JFrameOperator getApplication() {
 		if (mainFrame == null) {
 			try {
 				new ClassReference("addressbook.AddressBookFrame").startApplication();
