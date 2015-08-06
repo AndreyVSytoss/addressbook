@@ -3,6 +3,7 @@ package com.example.fw;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.netbeans.jemmy.operators.JDialogOperator;
 import org.netbeans.jemmy.operators.JFrameOperator;
 import org.netbeans.jemmy.operators.JTreeOperator;
 
@@ -17,8 +18,7 @@ public class FolderHelper {
 
 	public Folders getFolders() {
 		List<String> list = new ArrayList<String>();
-		JFrameOperator mainFrame = manager.getApplication();
-		JTreeOperator tree = new JTreeOperator(mainFrame);
+		JTreeOperator tree = new JTreeOperator(manager.getApplication());
 		Object[] children = tree.getChildren(tree.getRoot());
 		for (Object child : children) {
 			list.add("" + child);
@@ -27,8 +27,8 @@ public class FolderHelper {
 	}
 
 	public void createFolder(String string) {
-		// TODO Auto-generated method stub
-		
+		manager.getMenuHelper().pushCreateFolder();
+		JDialogOperator dialog = new JDialogOperator(manager.getApplication());
 	}
 
 }
