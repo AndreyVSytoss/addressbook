@@ -15,6 +15,8 @@ public class ApplicationManager {
 	private FolderHelper folderHelper;
 
 	private JFrameOperator mainFrame;
+
+	private MenuHelper menuHelper;
 	
 	public static ApplicationManager getInstance() {
 		if(singleton == null){
@@ -32,13 +34,14 @@ public class ApplicationManager {
 	}
 
 	public void stop() {
+		getApplication().requestClose();
 	}
 
 	public FolderHelper getFolderHelper() {
 		if (folderHelper == null) {
 			folderHelper = new FolderHelper(this);
 		}
-		return null;
+		return folderHelper;
 	}
 
 	public JFrameOperator getApplication() {
@@ -51,5 +54,12 @@ public class ApplicationManager {
 			}	
 		}
 		return mainFrame;
+	}
+
+	public MenuHelper getMenuHelper() {
+		if (menuHelper == null) {
+			menuHelper = new MenuHelper(this);
+		}
+		return menuHelper;
 	}
 }

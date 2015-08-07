@@ -16,7 +16,7 @@ public class TestBase {
 	protected ApplicationManager app;
 	
 	@BeforeClass
-	@Parameters
+	@Parameters({"configFile"})
 	public void setUp(@Optional String configFile) throws Exception {
 		if (configFile == null) {
 			configFile = System.getProperty("configFile");
