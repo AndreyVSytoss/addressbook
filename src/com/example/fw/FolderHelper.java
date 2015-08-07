@@ -3,8 +3,10 @@ package com.example.fw;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.netbeans.jemmy.operators.JButtonOperator;
 import org.netbeans.jemmy.operators.JDialogOperator;
 import org.netbeans.jemmy.operators.JFrameOperator;
+import org.netbeans.jemmy.operators.JTextFieldOperator;
 import org.netbeans.jemmy.operators.JTreeOperator;
 
 public class FolderHelper {
@@ -26,9 +28,11 @@ public class FolderHelper {
 		return new Folders(list);
 	}
 
-	public void createFolder(String string) {
+	public void createFolder(String folderName) {
 		manager.getMenuHelper().pushCreateFolder();
 		JDialogOperator dialog = new JDialogOperator(manager.getApplication());
+		new JTextFieldOperator(dialog).setText(folderName);
+		new JButtonOperator(dialog, "OK").push();
 	}
 
 }
