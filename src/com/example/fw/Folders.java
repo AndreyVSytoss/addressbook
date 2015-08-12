@@ -47,4 +47,10 @@ public class Folders {
 	public String toString() {
 		return "Folders [" + storedFolders + "]";
 	}
+
+	public Folders withoutDeleted(int index) {
+		Folders newList = new Folders(storedFolders);
+		newList.storedFolders.remove(index);
+		return newList;
+	}
 }
